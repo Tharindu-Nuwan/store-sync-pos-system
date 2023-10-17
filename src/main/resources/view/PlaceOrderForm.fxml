@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="654.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.app.controller.PlaceOrderFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="654.0">
+         <fill>
+            <LinearGradient endX="0.04807692307692308" endY="0.7115384615384616">
+               <stops>
+                  <Stop color="#1598d6" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <ImageView id="imgHome" fitHeight="53.0" fitWidth="55.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="95.0" layoutY="24.0" text="Place Order">
+         <font>
+            <Font name="Lucida Sans Demibold" size="27.0" />
+         </font>
+      </Label>
+<!--      <JFXButton id="btnAddNewOrder" fx:id="btnAddNewOrder" layoutX="518.0" layoutY="25.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="122.0" style="-fx-cursor: hand; -fx-background-color: #007bff; -fx-text-fill: white;" text="+ New Order" />-->
+      <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="195.0" layoutY="132.0" prefHeight="28.0" prefWidth="437.0" promptText="Customer Name :" />
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="195.0" layoutY="178.0" prefHeight="28.0" prefWidth="437.0" promptText="Item Description :" />
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="17.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty. on Hand" />
+      <JFXButton id="btnSave" fx:id="btnSave" buttonType="RAISED" layoutX="558.0" layoutY="226.0" onAction="#btnAdd_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="ADD" />
+      <TableView fx:id="tblOrderDetails" layoutX="17.0" layoutY="280.0" prefHeight="268.0" prefWidth="620.0">
+        <columns>
+          <TableColumn prefWidth="77.0" text="Code" />
+          <TableColumn prefWidth="174.0" text="Description" />
+            <TableColumn prefWidth="64.0" text="Qty" />
+            <TableColumn prefWidth="109.0" text="Unit Price" />
+            <TableColumn prefWidth="106.0" text="Total" />
+            <TableColumn prefWidth="89.0" text="Delete" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="195.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Unit Price" />
+      <JFXComboBox fx:id="cmbCustomerId" labelFloat="true" layoutX="14.0" layoutY="132.0" prefHeight="28.0" prefWidth="161.0" promptText="Customer ID :" />
+      <JFXComboBox fx:id="cmbItemCode" labelFloat="true" layoutX="14.0" layoutY="178.0" prefHeight="28.0" prefWidth="161.0" promptText="Item Code :" />
+<!--      <JFXTextField fx:id="txtQty" onKeyPressed="#txtQty_OnKeyPressed" labelFloat="true" layoutX="370.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />-->
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="370.0" layoutY="226.0" onAction="#txtQty_OnAction" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />
+      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="571.0" layoutY="68.0" prefHeight="24.0" prefWidth="74.0" text="OD001" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="68.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" alignment="CENTER_RIGHT" layoutX="484.0" layoutY="93.0" prefHeight="24.0" prefWidth="152.0" text="2023-10-12">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="161.0" layoutY="493.0" prefHeight="29.0" prefWidth="183.0" text="0.00" AnchorPane.bottomAnchor="10.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <JFXButton id="btnSave" fx:id="btnPlaceOrder" buttonType="RAISED" layoutX="519.0" layoutY="485.0" onAction="#btnPlaceOrder_OnAction" prefHeight="35.0" prefWidth="119.0" style="-fx-cursor: hand; -fx-background-color: orange; -fx-text-fill: black; -fx-font-size: 16px;" text="Place Order" AnchorPane.bottomAnchor="10.0" />
+      <Label layoutX="17.0" layoutY="493.0" text="TOTAL : Rs." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="464.0" layoutY="68.0" prefHeight="24.0" prefWidth="98.0" text="ORDER ID :" AnchorPane.topAnchor="68.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="441.0" layoutY="93.0" prefHeight="24.0" prefWidth="98.0" text="DATE :">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@../style/manageitemform.css" />
+      <URL value="@../style/style.css" />
+   </stylesheets>
+</AnchorPane>

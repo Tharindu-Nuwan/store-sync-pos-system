@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
@@ -39,12 +40,60 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <JFXButton id="btnAddNewCustomer" fx:id="btnAddNew" layoutX="518.0" layoutY="25.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="122.0" style="-fx-cursor: hand;" text="+ New Customer" />
+      <JFXButton id="btnAddNewCustomer" fx:id="btnAddNew" buttonType="RAISED" layoutX="518.0" layoutY="25.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="122.0" style="-fx-cursor: hand;" text="+ New Customer" AnchorPane.rightAnchor="20.0">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill></JFXButton>
       <JFXTextField fx:id="txtCustomerId" labelFloat="true" layoutX="17.0" layoutY="118.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer ID :" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="17.0" layoutY="164.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Name :" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <JFXTextField fx:id="txtCustomerAddress" labelFloat="true" layoutX="17.0" layoutY="212.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Address :" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <JFXButton id="btnSave" fx:id="btnSave" layoutX="246.0" layoutY="278.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Save" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="334.0" />
-      <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="330.0" layoutY="278.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Delete" />
+      <JFXButton id="btnSave" fx:id="btnSave" buttonType="RAISED" layoutX="246.0" layoutY="278.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="90.0" style="-fx-cursor: hand;" text="SAVE" AnchorPane.leftAnchor="215.0">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill></JFXButton>
+      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="330.0" layoutY="278.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="90.0" style="-fx-cursor: hand;" text="DELETE" AnchorPane.rightAnchor="215.0">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </ripplerFill></JFXButton>
       <TableView fx:id="tblCustomers" layoutX="22.0" layoutY="316.0" prefHeight="285.0" prefWidth="615.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         <columns>
           <TableColumn prefWidth="97.0" text="Customer ID" />
