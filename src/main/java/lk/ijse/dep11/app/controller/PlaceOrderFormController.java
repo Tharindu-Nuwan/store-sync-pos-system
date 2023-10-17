@@ -3,6 +3,7 @@ package lk.ijse.dep11.app.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -29,6 +31,13 @@ public class PlaceOrderFormController {
     public Label lblDate;
     public Label lblTotal;
     public JFXButton btnPlaceOrder;
+
+    public void initialize() {
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), root);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
+    }
 
     public void btnAdd_OnAction(ActionEvent actionEvent) {
     }

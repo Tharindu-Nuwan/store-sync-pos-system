@@ -1,7 +1,9 @@
 package lk.ijse.dep11.app.controller;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -23,6 +25,9 @@ public class DashboardViewController {
     public Label lblTitle;
     public Label lblDescription;
 
+    public void initialize() {
+        applyFadeInTransition(1000, root);
+    }
     public void imgCustomerOnMouseClicked(MouseEvent mouseEvent) {
         loadSceneOnClick("Manage Customers", "/view/ManageCustomerForm.fxml");
     }
@@ -46,6 +51,9 @@ public class DashboardViewController {
             scaleT.setToX(1);
             scaleT.setToY(1);
             scaleT.play();
+
+            applyFadeInTransition(200, lblTitle);
+            applyFadeInTransition(200, lblDescription);
 
             icon.setEffect(null);
             lblTitle.setText("WELCOME!");
@@ -81,6 +89,9 @@ public class DashboardViewController {
             scaleT.setToY(1.2);
             scaleT.play();
 
+            applyFadeInTransition(200, lblTitle);
+            applyFadeInTransition(200, lblDescription);
+
             DropShadow glow = new DropShadow();
             glow.setColor(Color.CORNFLOWERBLUE);
             glow.setWidth(20);
@@ -102,5 +113,12 @@ public class DashboardViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void applyFadeInTransition(double millis, Node node) {
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(millis), node);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
     }
 }

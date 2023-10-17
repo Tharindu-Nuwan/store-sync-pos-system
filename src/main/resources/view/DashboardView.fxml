@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="373.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.app.controller.DashboardViewController">
+<AnchorPane fx:id="root" prefHeight="422.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.app.controller.DashboardViewController">
    <children>
-      <HBox alignment="CENTER" layoutX="25.0" layoutY="132.0" prefHeight="100.0" prefWidth="528.0" spacing="40.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="132.0">
+      <HBox alignment="CENTER" layoutX="25.0" layoutY="150.0" prefHeight="100.0" prefWidth="528.0" spacing="40.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="150.0">
          <children>
             <ImageView fx:id="imgCustomer" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#imgCustomerOnMouseClicked" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -38,29 +38,29 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <Label fx:id="lblTitle" alignment="CENTER" layoutX="247.0" layoutY="260.0" text="WELCOME !" textFill="#10075e" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="10.0" layoutY="300.0" text="WELCOME !" textFill="#10075e" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Ubuntu Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblDescription" alignment="CENTER" layoutX="296.0" layoutY="297.0" text="Please select any of above operations to proceed." AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="10.0" layoutY="342.0" text="Please select any of above operations to proceed." AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Ubuntu Medium Italic" size="12.0" />
          </font>
       </Label>
-      <Separator layoutX="25.0" layoutY="102.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-      <Separator layoutX="5.0" layoutY="342.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-      <Label alignment="CENTER" layoutX="5.0" layoutY="349.0" text="Copyright (c) 2023 Tharindu Nuwan Madhushanka. All Rights Reserved." AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+      <Separator layoutX="5.0" layoutY="117.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Separator layoutX="5.0" layoutY="395.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Label alignment="CENTER" layoutX="5.0" layoutY="400.0" text="Copyright (c) 2023 Tharindu Nuwan Madhushanka. All Rights Reserved." AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <ImageView fitHeight="88.0" fitWidth="257.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="5.0">
+      <ImageView fitHeight="85.0" fitWidth="267.0" layoutX="188.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="187.0" AnchorPane.topAnchor="5.0">
          <image>
             <Image url="@../asset/StoreSync-logo.gif" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="20.0" layoutY="78.0" style="-fx-background-color: lightBlue; -fx-background-radius: 10px;" text="POINT OF SALE SYSTEM" AnchorPane.bottomAnchor="279.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+      <Label alignment="CENTER" layoutX="20.0" layoutY="86.0" prefHeight="21.0" prefWidth="602.0" style="-fx-background-color: lightBlue; -fx-background-radius: 10px;" text="POINT OF SALE SYSTEM" AnchorPane.bottomAnchor="315.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
