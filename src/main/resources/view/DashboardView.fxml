@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.dep11.app.controller.DashboardViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.app.controller.DashboardViewController">
+   <children>
+      <ImageView fitHeight="88.0" fitWidth="257.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@../asset/StoreSync-logo.gif" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="220.0" layoutY="74.0" text="POINT OF SALE SYSTEM" AnchorPane.bottomAnchor="310.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
