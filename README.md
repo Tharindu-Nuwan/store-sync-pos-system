@@ -34,4 +34,5 @@ At StoreSync, we understand the importance of delivering a superior shopping exp
 ---
 
 ### License
-This project is licensed under [MIT LICENSE](License.txt). All Rights Reserved.
+Copyright &copy; 2023 Tharindu Nuwan Madhushanka. All Rights Reserved.
+This project is licensed under [MIT LICENSE](License.txt).

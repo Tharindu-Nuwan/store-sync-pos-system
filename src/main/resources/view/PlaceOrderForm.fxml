@@ -45,14 +45,14 @@
       <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="195.0" layoutY="178.0" prefHeight="28.0" prefWidth="437.0" promptText="Item Description :" />
       <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="17.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty. on Hand" />
       <JFXButton id="btnSave" fx:id="btnSave" buttonType="RAISED" layoutX="558.0" layoutY="226.0" onAction="#btnAdd_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="ADD" />
-      <TableView fx:id="tblOrderDetails" layoutX="17.0" layoutY="280.0" prefHeight="268.0" prefWidth="620.0">
+      <TableView fx:id="tblOrderDetails" layoutX="17.0" layoutY="280.0" prefHeight="268.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <columns>
-          <TableColumn prefWidth="77.0" text="Code" />
-          <TableColumn prefWidth="174.0" text="Description" />
-            <TableColumn prefWidth="64.0" text="Qty" />
-            <TableColumn prefWidth="109.0" text="Unit Price" />
-            <TableColumn prefWidth="106.0" text="Total" />
-            <TableColumn prefWidth="89.0" text="Delete" />
+          <TableColumn text="Code" />
+          <TableColumn prefWidth="229.0" text="Description" />
+            <TableColumn prefWidth="59.0" text="Qty" />
+            <TableColumn prefWidth="78.0" text="Unit Price" />
+            <TableColumn prefWidth="96.0" text="Total" />
+            <TableColumn prefWidth="81.0" text="Delete" />
         </columns>
       </TableView>
       <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="195.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Unit Price" />

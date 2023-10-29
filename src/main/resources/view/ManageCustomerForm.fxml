@@ -77,7 +77,7 @@
                </stops>
             </LinearGradient>
          </ripplerFill></JFXButton>
-      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="330.0" layoutY="278.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="90.0" style="-fx-cursor: hand;" text="DELETE" AnchorPane.rightAnchor="215.0">
+      <JFXButton id="btnDelete" fx:id="btnDelete" buttonType="RAISED" layoutX="330.0" layoutY="278.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="90.0" style="-fx-cursor: hand;" text="DELETE" AnchorPane.leftAnchor="355.0">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -94,11 +94,11 @@
                </stops>
             </LinearGradient>
          </ripplerFill></JFXButton>
-      <TableView fx:id="tblCustomers" layoutX="22.0" layoutY="316.0" prefHeight="285.0" prefWidth="615.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+      <TableView fx:id="tblCustomers" layoutX="22.0" layoutY="316.0" prefHeight="285.0" prefWidth="615.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="320.0">
         <columns>
-          <TableColumn prefWidth="97.0" text="Customer ID" />
-          <TableColumn prefWidth="230.0" text="Customer Name" />
-            <TableColumn prefWidth="287.0" text="Customer Address" />
+          <TableColumn fx:id="colId" prefWidth="97.0" text="Customer ID" />
+          <TableColumn fx:id="colName" prefWidth="230.0" text="Customer Name" />
+            <TableColumn fx:id="colAddress" prefWidth="287.0" text="Customer Address" />
         </columns>
       </TableView>
    </children>
