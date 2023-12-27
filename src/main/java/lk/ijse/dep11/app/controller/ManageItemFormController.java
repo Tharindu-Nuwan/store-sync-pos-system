@@ -152,7 +152,7 @@ public class ManageItemFormController {
             txtCode.requestFocus();
             txtCode.selectAll();
             return false;
-        } else if (!description.matches("^[A-Za-z0-9 ]{4,}$")) {
+        } else if (!description.matches("^[A-Za-z0-9.() ]{4,}$")) {
             txtDescription.requestFocus();
             txtDescription.selectAll();
             return false;

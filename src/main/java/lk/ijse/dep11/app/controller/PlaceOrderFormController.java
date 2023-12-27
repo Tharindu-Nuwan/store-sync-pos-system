@@ -23,11 +23,21 @@ import lk.ijse.dep11.app.db.OrderDataAccess;
 import lk.ijse.dep11.app.tm.Customer;
 import lk.ijse.dep11.app.tm.Item;
 import lk.ijse.dep11.app.tm.OrderItem;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class PlaceOrderFormController {
     public AnchorPane root;
@@ -57,7 +67,7 @@ public class PlaceOrderFormController {
                     .setCellValueFactory(new PropertyValueFactory<>(cols[i]));
         }
 
-        lblDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        lblDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         newOrder();
 
         cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((ov, prev, cur)-> {
@@ -102,6 +112,8 @@ public class PlaceOrderFormController {
     }
 
     private void enablePlaceOrderButton() {
+        Customer selectedCustomer = cmbCustomerId.getSelectionModel().getSelectedItem();
+        btnPlaceOrder.setDisable(!(selectedCustomer != null && !tblOrderDetails.getItems().isEmpty()));
     }
 
     private void newOrder() throws IOException {
@@ -125,11 +137,11 @@ public class PlaceOrderFormController {
                 lblId.setText("OD001");
             } else {
                 int newOrderId = Integer.parseInt(lastOrderId.substring(2)) + 1;
-                lblId.setText(String.format("OD%03", newOrderId));
+                lblId.setText(String.format("OD%03d", newOrderId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to establish database connection,  try later!")
+            new Alert(Alert.AlertType.ERROR, "Failed to establish database connection, try later!")
                     .show();
             navigateToHome(null);
         }
@@ -137,12 +149,80 @@ public class PlaceOrderFormController {
     }
 
     public void btnAdd_OnAction(ActionEvent actionEvent) {
+        Item selectedItem = cmbItemCode.getSelectionModel().getSelectedItem();
+        Optional<OrderItem> optOrderItem = tblOrderDetails.getItems().stream()
+                .filter(item -> selectedItem.getCode().equals(item.getCode())).findFirst();
+
+        if (optOrderItem.isEmpty()) {
+            JFXButton btnDelete = new JFXButton("Delete");
+            OrderItem newOrderItem = new OrderItem(selectedItem.getCode(), selectedItem.getDescription(),
+                    Integer.parseInt(txtQty.getText()), selectedItem.getUnitPrice(), btnDelete);
+            tblOrderDetails.getItems().add(newOrderItem);
+            btnDelete.setOnAction(e -> {
+                tblOrderDetails.getItems().remove(newOrderItem);
+                selectedItem.setQty(selectedItem.getQty() + newOrderItem.getQty());
+                calculateOrderTotal();
+                enablePlaceOrderButton();
+            });
+            selectedItem.setQty(selectedItem.getQty() - newOrderItem.getQty());
+        } else {
+            OrderItem orderItem = optOrderItem.get();
+            orderItem.setQty(orderItem.getQty() + Integer.parseInt(txtQty.getText()));
+            tblOrderDetails.refresh();
+            selectedItem.setQty(selectedItem.getQty() - Integer.parseInt(txtQty.getText()));
+        }
+        cmbItemCode.getSelectionModel().clearSelection();
+        cmbItemCode.requestFocus();
+        calculateOrderTotal();
+        enablePlaceOrderButton();
     }
 
-    public void txtQty_OnAction(ActionEvent actionEvent) {
+    private void calculateOrderTotal() {
+        Optional<BigDecimal> orderTotal = tblOrderDetails.getItems().stream()
+                .map(oi -> oi.getTotal())
+                .reduce((prev, cur)-> prev.add(cur));
+        lblTotal.setText(orderTotal.orElseGet(()-> BigDecimal.ZERO).setScale(2) + "");
     }
 
-    public void btnPlaceOrder_OnAction(ActionEvent actionEvent) {
+
+    public void btnPlaceOrder_OnAction(ActionEvent actionEvent) throws IOException {
+        try {
+            OrderDataAccess.saveOrder(lblId.getText().strip(),
+                    Date.valueOf(lblDate.getText()),
+                    cmbCustomerId.getValue().getId(),
+                    tblOrderDetails.getItems());
+            printBill();
+            newOrder();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to save the order, try later!")
+                    .show();
+        }
+    }
+
+    private void printBill() {
+        try {
+            JasperDesign jasperDesign = JRXmlLoader
+                    .load(getClass().getResourceAsStream("/print/storesync_pos-bill.jrxml"));
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            Map<String, Object> reportParams = new HashMap<>();
+            reportParams.put("id", lblId.getText().strip());
+            reportParams.put("date", lblDate.getText());
+            reportParams.put("customer-id", cmbCustomerId.getValue().getId());
+            reportParams.put("customer-name", cmbCustomerId.getValue().getName());
+            reportParams.put("total", lblTotal.getText());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, reportParams,
+                    new JRBeanCollectionDataSource(tblOrderDetails.getItems()));
+
+            JasperViewer.viewReport(jasperPrint, false);
+//            JasperPrintManager.printReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to print the bill!")
+                    .show();
+        }
     }
 
     public void navigateToHome(MouseEvent mouseEvent) throws IOException {

@@ -17,7 +17,7 @@
    <children>
       <TextField fx:id="txtSearch" layoutX="14.0" layoutY="117.0" prefHeight="28.0" prefWidth="622.0" promptText="Eg. Kasun Sampath, C001, etc." />
       <Label layoutX="14.0" layoutY="90.0" text="Enter something to search here" />
-      <TableView fx:id="tblOrders" layoutX="14.0" layoutY="155.0" onMouseClicked="#tblOrders_OnMouseClicked" prefHeight="308.0" prefWidth="622.0">
+      <TableView fx:id="tblOrders" layoutX="14.0" layoutY="155.0" prefHeight="308.0" prefWidth="622.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Order ID" />
           <TableColumn prefWidth="102.0" text="Order Date" />

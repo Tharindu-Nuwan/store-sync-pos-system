@@ -59,7 +59,7 @@
       <JFXComboBox fx:id="cmbCustomerId" labelFloat="true" layoutX="14.0" layoutY="132.0" prefHeight="28.0" prefWidth="161.0" promptText="Customer ID :" />
       <JFXComboBox fx:id="cmbItemCode" labelFloat="true" layoutX="14.0" layoutY="178.0" prefHeight="28.0" prefWidth="161.0" promptText="Item Code :" />
 <!--      <JFXTextField fx:id="txtQty" onKeyPressed="#txtQty_OnKeyPressed" labelFloat="true" layoutX="370.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />-->
-      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="370.0" layoutY="226.0" onAction="#txtQty_OnAction" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="370.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />
       <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="571.0" layoutY="68.0" prefHeight="24.0" prefWidth="74.0" text="OD001" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="68.0">
          <font>
             <Font size="17.0" />
