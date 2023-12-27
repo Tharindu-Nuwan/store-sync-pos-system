@@ -107,6 +107,7 @@ public class DashboardViewController {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(fxmlPath))));
             stage.centerOnScreen();
             stage.setTitle(title);
+            stage.setResizable(false);
             stage.show();
             Stage home = (Stage) root.getScene().getWindow();
             home.close();

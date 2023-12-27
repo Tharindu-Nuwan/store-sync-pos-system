@@ -28,8 +28,22 @@ At StoreSync, we understand the importance of delivering a superior shopping exp
 
 ---
 
+![Dash Board View](./src/main/resources/screen-shots/1.png)
+![Manage Customers View](./src/main/resources/screen-shots/2.png)
+![Manage Items View](./src/main/resources/screen-shots/3.png)
+![Manage Orders View](./src/main/resources/screen-shots/4.png)
+![Search Orders View](./src/main/resources/screen-shots/5.png)
+
+---
+### Tech Stack Used
+- **Languages** - Java, SQL, CSS
+- **Framework** - JavaFX
+- **Database** - PostgreSQL
+- **Testing** - JUnit5
+- **Other** - SceneBuilder, Jasper Reports
+
 ### Version
-0.1.0
+1.0.0
 
 ---
 
