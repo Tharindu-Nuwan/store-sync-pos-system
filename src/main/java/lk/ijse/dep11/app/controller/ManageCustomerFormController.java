@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Duration;
 import lk.ijse.dep11.app.db.CustomerDataAccess;
+import lk.ijse.dep11.app.db.OrderDataAccess;
 import lk.ijse.dep11.app.tm.Customer;
 
 import java.io.IOException;
@@ -120,14 +121,14 @@ public class ManageCustomerFormController {
             if (btnSave.getText().equals("SAVE")) {
                 CustomerDataAccess.saveCustomer(customer);
                 tblCustomers.getItems().add(customer);
-                new Alert(Alert.AlertType.CONFIRMATION, "Customer saved successfully!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Customer saved successfully!").show();
             } else {
                 CustomerDataAccess.updateCustomer(customer);
                 ObservableList<Customer> customerList = tblCustomers.getItems();
                 Customer selectedCustomer = tblCustomers.getSelectionModel().getSelectedItem();
                 customerList.set(customerList.indexOf(selectedCustomer), customer);
                 tblCustomers.refresh();
-                new Alert(Alert.AlertType.CONFIRMATION, "Customer updated successfully!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Customer updated successfully!").show();
             }
             btnAddNew.fire();
         } catch(SQLException e){
@@ -137,7 +138,20 @@ public class ManageCustomerFormController {
     }
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {
-        // Todo check  whether customer associated with an order
+        try {
+            if (OrderDataAccess.existOrderByCustomerId(txtCustomerId.getText())) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Unable to delete this customer, already associated with an order").show();
+            } else {
+                CustomerDataAccess.deleteCustomer(txtCustomerId.getText());
+                ObservableList<Customer> customersList = tblCustomers.getItems();
+                Customer selectedCustomer = tblCustomers.getSelectionModel().getSelectedItem();
+                customersList.remove(selectedCustomer);
+                if (customersList.isEmpty()) btnAddNew.fire();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private boolean isDataValid() {
