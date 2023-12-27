@@ -41,7 +41,7 @@ At StoreSync, we understand the importance of delivering a superior shopping exp
 - **Database** - PostgreSQL
 - **Testing** - JUnit5
 - **Other** - SceneBuilder, Jasper Reports
-
+---
 ### Version
 1.0.0
 
